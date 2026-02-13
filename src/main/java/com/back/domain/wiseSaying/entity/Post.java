@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -12,4 +13,10 @@ public class Post {
     private  String title;
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
+
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
 }
