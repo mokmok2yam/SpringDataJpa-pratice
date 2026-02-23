@@ -28,6 +28,6 @@ public class PostService {
     public Post modify(Post post, String title, String content){
         post.setTitle(title);
         post.setContent(content);
-        return post;
+        return postRepository.save(post);
     }
 }
