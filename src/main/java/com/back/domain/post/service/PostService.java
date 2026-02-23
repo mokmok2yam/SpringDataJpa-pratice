@@ -25,4 +25,9 @@ public class PostService {
     public long count(){
         return postRepository.count();
     }
+    public Post modify(Post post, String title, String content){
+        post.setTitle(title);
+        post.setContent(content);
+        return post;
+    }
 }
