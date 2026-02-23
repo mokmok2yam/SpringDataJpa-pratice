@@ -1,6 +1,5 @@
 package com.back.global;
 
-import com.back.domain.post.entity.Post;
 import com.back.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationRunner;
@@ -19,15 +18,21 @@ public class BaseInitData {
         };
     }
     void work1() {
+        try {
+            if (postService.count() > 0) {
+                return;
+            }
+            // 어떤 기능을 테스트 데이터가 2개인 것을 가정하고 개발
+            postService.write("제목1", "내용1");
+            if (true) {
+                throw new RuntimeException("테스트 예외");
+            }
+            postService.write("제목2", "내용2");
 
-        if(postService.count() > 0) {
-            return;
+        } catch (Exception e) {
+            System.out.println("예외 발생 : " + e.getMessage());
         }
-        postService.write("제목1","내용1");
-        Post post2 = new Post("제목2", "내용2");
-        postService.write("제목2","내용2");
     }
-
     void work2() {
         postService.findById(1);
         // select * from post where id = 1;
