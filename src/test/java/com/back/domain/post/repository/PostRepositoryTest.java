@@ -22,17 +22,18 @@ public class PostRepositoryTest {
     @Rollback
     void t1(){
         Post post = postRepository.findById(2).get();
-        assertThat("제목2").isEqualTo(post.getTitle());
+        assertThat("테스트 제목2").isEqualTo(post.getTitle());
+        assertThat(post.getContent()).isEqualTo("테스트 내용2");
     }
     @Test
     @Transactional
     @Rollback
     void t2(){
-        Post post = new Post("제목3","내용3");
+        Post post = new Post("테스트 제목3","테스트 내용3");
         Post savedPost = postRepository.save(post);
         assertThat(savedPost.getId()).isNotNull();
-        assertThat(savedPost.getTitle()).isEqualTo("제목3");
-        assertThat(savedPost.getContent()).isEqualTo("내용3");
+        assertThat(savedPost.getTitle()).isEqualTo("테스트 제목3");
+        assertThat(savedPost.getContent()).isEqualTo("테스트 내용3");
     }
     @Test
     @Transactional
