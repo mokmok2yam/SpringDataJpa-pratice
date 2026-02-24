@@ -7,13 +7,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
+@Getter
 public class Member extends BaseEntity {
+
     @Column(unique = true)
-    private String userName;
+    private String username;
     @Column(length = 100)
     private String password;
     @Column(length = 30)
-    private  String nickname;
+    private String nickname;
+
 }

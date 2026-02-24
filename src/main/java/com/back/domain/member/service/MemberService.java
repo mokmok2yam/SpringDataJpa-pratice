@@ -8,13 +8,18 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
+
     private final MemberRepository memberRepository;
-    public Member join(String  userName,String password, String nickname){
+
+    public Member join(String username, String password, String nickname) {
+
         Member member = new Member();
-        member.setUserName(userName);
+        member.setUsername(username);
         member.setPassword(password);
         member.setNickname(nickname);
-        return memberRepository.save(member);
-    }
 
+        return memberRepository.save(member);
+
+
+    }
 }

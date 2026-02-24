@@ -9,16 +9,19 @@ import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 public class Post extends BaseEntity {
-
     @Column(length = 100, nullable = false)
     private String title;
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    public Post(String title, String content) {
+    private int authorId;
+
+    public Post(int authorId, String title, String content) {
+        this.authorId = authorId;
         this.title = title;
         this.content = content;
     }
